@@ -1,3 +1,13 @@
+import spacy
+import subprocess
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
+
 import streamlit as st
 import time
 from textblob import TextBlob
@@ -176,8 +186,6 @@ st.markdown("<div class='card'>", unsafe_allow_html=True)
 message = st.text_area("📝 Enter Text to Analyze", height=180, placeholder="Type or paste your text here...")
 st.markdown("</div>", unsafe_allow_html=True)
 
-# Load SpaCy model
-nlp = spacy.load("en_core_web_sm")
 
 # ============================
 # ⚡ PROCESSING SECTION
