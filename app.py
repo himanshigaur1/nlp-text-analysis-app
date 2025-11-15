@@ -1,17 +1,18 @@
 import spacy
-import subprocess
+from spacy.cli import download
 
+# Automatically download SpaCy model in Streamlit Cloud
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    download("en_core_web_sm")   # Cloud-safe download
     nlp = spacy.load("en_core_web_sm")
+
 
 
 import streamlit as st
 import time
 from textblob import TextBlob
-import spacy
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
