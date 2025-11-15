@@ -161,7 +161,6 @@ with st.expander("📘 About this App"):
 # 🧩 SIDEBAR
 # ============================
 st.sidebar.image("images/Logo.png", width=100)
-)
 st.sidebar.header("⚙️ Configuration")
 feature = st.sidebar.selectbox(
     "Choose an NLP Feature",
